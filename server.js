@@ -3,11 +3,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
 
+var cors = require('cors');
+
 const app = express();
 
 // Bodyparser Middleware
 app.use(express.json());
-
+app.use(cors());
 // DB Config
 
 const db = config.get('mongoURI');
