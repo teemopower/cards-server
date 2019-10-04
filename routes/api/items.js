@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 // @access  Private
 
 // router.post('/', auth, (req, res) => {
-  router.post('/', (req, res) => {
+router.post('/', (req, res) => {
   const newItem = new Item({
     name: req.body.name,
     description: req.body.description
@@ -27,6 +27,27 @@ router.get('/', (req, res) => {
 
   newItem.save().then(item => res.json(item));
 });
+
+// @route   PUT api/items/:id
+// @desc    Update A Item
+// @access  Private
+
+router.put('/:id', (req,res) => {
+  let updated = {
+    name: req.body.name,
+    description: req.body.description
+  }
+  
+  Item.findOneAndUpdate(
+    { _id: req.params.id },
+      updated
+    ).then(result => {
+      res.json(res.body)
+    })
+    .catch(err => console.log('error',err))
+  
+});
+
 
 // @route   DELETE api/items/:id
 // @desc    Delete A Item
