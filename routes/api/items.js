@@ -42,7 +42,7 @@ router.put('/:id', (req,res) => {
     { _id: req.params.id },
       updated
     ).then(result => {
-      res.json(res.body)
+      res.json("Successfully updated")
     })
     .catch(err => console.log('error',err))
   
