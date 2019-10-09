@@ -20,7 +20,7 @@ mongoose
   .connect(db, { 
     useNewUrlParser: false,
     useCreateIndex: true,
-    useFindAndModify: true,
+    useFindAndModify: false,
     useUnifiedTopology: true
   }) 
   .then(() => console.log('MongoDB Connected...'))
