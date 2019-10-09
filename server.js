@@ -2,26 +2,27 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const config = require('config');
-
+require('dotenv').config()
 var cors = require('cors');
-
 const app = express();
 
 // Bodyparser Middleware
 app.use(express.json());
 app.use(cors());
-// DB Config
 
-const db = config.get('mongoURI');
+// DB Config
+// const db = config.get('mongoURI');
+let db_pass = encodeURIComponent(process.env.DB_PASS);
+const db = `${process.env.DB_HOST}${process.env.DB_USER}:${db_pass}${process.env.DB_DOMAIN}${process.env.DB_SSL}`
 
 // Connect to Mongo
 mongoose
   .connect(db, { 
-    useNewUrlParser: true,
+    useNewUrlParser: false,
     useCreateIndex: true,
-    useFindAndModify: false,
+    useFindAndModify: true,
     useUnifiedTopology: true
-  }) // Adding new mongo url parser
+  }) 
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
