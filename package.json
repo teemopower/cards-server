@@ -1,7 +1,7 @@
 {
   "name": "item_list",
   "version": "1.0.0",
-  "description": "List built with the MERN stack",
+  "description": "MERN stack",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
